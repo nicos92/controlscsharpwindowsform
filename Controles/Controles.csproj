@@ -55,6 +55,9 @@
     <Compile Include="NSDatePicker.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="NSRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="NSTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
