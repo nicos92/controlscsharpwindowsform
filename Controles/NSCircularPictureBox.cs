@@ -35,7 +35,7 @@ namespace Controles
                 public global::System.Single GradientAngle { get => gradientAngle; set { gradientAngle = value; this.Invalidate(); } }
 
                 // overridden methods
-                protected override void OnResize(EventsArgs e)
+                protected override void OnResize(EventArgs e)
                 {
                         base.OnResize(e);
                         this.Size = new Size(this.Width, this.Width);
@@ -46,12 +46,12 @@ namespace Controles
                         base.OnPaint(pe);
                         //Fields
                         var graph = pe.Graphics;
-                        var rectContoursmooth = Rectagle.Inflate(this.ClientRectangle, -1, -1);
+                        var rectContoursmooth = Rectangle.Inflate(this.ClientRectangle, -1, -1);
                         var rectBorder = Rectangle.Inflate(rectContoursmooth, -borderSize, -borderSize);
                         var smoothSize = borderSize > 3 ? borderSize * 3 : 1;
                         using (var borderGColor = new LinearGradientBrush(rectBorder, borderColor, borderColor2, gradientAngle))
                         using (var pathRegion = new GraphicsPath())
-                        using(var penSmooth = new Pen(this.ParentBackColor, smoothSize))
+                        using(var penSmooth = new Pen(this.Parent.BackColor, smoothSize))
                         using(var penborder = new Pen(borderGColor, borderSize))
                         {
                                 penborder.DashStyle = borderLinestyle;
