@@ -19,20 +19,5 @@ namespace Controles
 
         
 
-        private void NsTextBox2__TextChanged(object sender, EventArgs e)
-        {
-            MessageBox.Show("Test");
-
-        }
-
-        private void nsTextBox2__TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void nsTextBox2_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
