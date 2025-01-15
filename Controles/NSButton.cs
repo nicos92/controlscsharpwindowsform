@@ -18,24 +18,24 @@ namespace Controles
         private Color borderColor = Color.PaleVioletRed;
 
         [Category("NS Button")]
-        public int BorderSize { get => borderSize; set { borderSize = value; this.Invalidate();} }
+        public int BorderSize { get {return borderSize;} set { borderSize = value; this.Invalidate();} }
         [Category("NS Button")]
-        public int BorderRadius { get => borderRadius; set { borderRadius = value; this.Invalidate(); } }
+        public int BorderRadius { get {return borderRadius; }set { borderRadius = value; this.Invalidate(); } }
         [Category("NS Button")]
-        public Color BorderColor { get => borderColor; set { borderColor = value; this.Invalidate(); } }
+        public Color BorderColor { get {return borderColor;} set { borderColor = value; this.Invalidate(); } }
 
         [Category("NS Button")]
         public Color BackGroudColor
         {
-            get => this.BackColor; 
+            get {return this.BackColor; }
             set { this.BackColor = value; }
             
         }
         [Category("NS Button")]
         public Color TextColor
         {
-            get => this.ForeColor;
-            set => this.ForeColor = value;
+            get {return this.ForeColor;}
+            set { this.ForeColor = value;}
         }
 
         //Constructor

@@ -34,7 +34,7 @@ namespace Controles
         [Category("NS Text Box")]
         public Color BorderColor
         {
-            get => borderColor;
+            get { return borderColor; }
 
 
             set { borderColor = value; this.Invalidate(); }
@@ -42,13 +42,13 @@ namespace Controles
         [Category("NS Text Box")]
         public int BorderSize
         {
-            get => borderSize;
+            get { return borderSize; }
             set { borderSize = value; this.Invalidate(); }
         }
         [Category("NS Text Box")]
         public bool UnderLinesStyle
         {
-            get => underLinesStyle;
+            get { return underLinesStyle; }
             set
             {
                 underLinesStyle = value; this.Invalidate();
@@ -126,15 +126,16 @@ namespace Controles
         }
 
         [Category("NS Text Box")]
-        public override Color BackColor { get => base.BackColor; set { base.BackColor = value; textBox1.BackColor = value; } }
+        public override Color BackColor { get { return base.BackColor; } set { base.BackColor = value; textBox1.BackColor = value; } }
 
         [Category("NS Text Box")]
-        public override Color ForeColor { get => base.ForeColor; set { base.ForeColor = value; textBox1.ForeColor = value; } }
+        public override Color ForeColor { get { return base.ForeColor; } set { base.ForeColor = value; textBox1.ForeColor = value; } }
 
         [Category("NS Text Box")]
         public override Font Font
         {
-            get => base.Font; set
+            get { return base.Font; }
+            set
             {
                 base.Font = value;
                 textBox1.Font = value;
@@ -146,10 +147,10 @@ namespace Controles
         }
 
         [Category("NS Text Box")]
-        public override string Text { get => textBox1.Text; set => textBox1.Text = value; }
+        public override string Text { get {return textBox1.Text;} set { textBox1.Text = value; }}
 
         [Category("NS Text Box")]
-        public Color BorderFocusColor { get => borderFocusColor; set => borderFocusColor = value; }
+        public Color BorderFocusColor { get {return borderFocusColor; }set { borderFocusColor = value;} }
 
 
 
@@ -157,7 +158,7 @@ namespace Controles
         // private methods
         private void UpdateControlHeight()
         {
-            if (textBox1.Multiline )
+            if (textBox1.Multiline)
             {
                 int txtHeight = TextRenderer.MeasureText("Text", this.Font).Height + 1;
                 textBox1.Multiline = true;

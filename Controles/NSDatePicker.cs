@@ -29,12 +29,12 @@ namespace Controles
         //-> properties
         public Color SkinColor
         {
-            get => skinColor;
+            get {return skinColor;}
             set { skinColor = value; calendarIcon = skinColor.GetBrightness() >= 0.8f ? Properties.Resources.calendari : Properties.Resources.calendari; this.Invalidate(); }
         }
-        public Color TextColor { get => textColor; set { textColor = value; this.Invalidate(); } }
-        public Color BorderColor { get => borderColor; set { borderColor = value; this.Invalidate(); } }
-        public int BorderSize { get => borderSize; set { borderSize = value; this.Invalidate(); } }
+        public Color TextColor { get {return textColor;} set { textColor = value; this.Invalidate(); } }
+        public Color BorderColor { get {return borderColor; }set { borderColor = value; this.Invalidate(); } }
+        public int BorderSize { get {return borderSize;} set { borderSize = value; this.Invalidate(); } }
 
         // -> constructor
         public NSDatePicker()
