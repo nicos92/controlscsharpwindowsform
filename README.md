@@ -5,12 +5,12 @@
 ### Text Box
 esta hecho con un user control. dentro de el hay un text box.
 
-### Circular Picture Box
-es una clase heredada de PictureBox
+## Circular Picture Box
+Es una Clase heredada de PictureBox
 
-### Date Picker
-es una clase heredada de DateTimePicker
+## Date Picker
+Es una Clase heredada de DateTimePicker
 
-### Radio Button
-todavia no se prepara
+## Radio Button
+Todavia no se prepara
 
