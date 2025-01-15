@@ -1,14 +1,14 @@
 # Controles para Windows Form
 
 ## Text Box
-esta hecho con un user control. dentro de el hay un text box.
+Esta hecho con un user control. dentro de el hay un text box.
 
 ## Circular Picture Box
-es una clase heredada de PictureBox
+Es una Clase heredada de PictureBox
 
 ## Date Picker
-es una clase heredada de DateTimePicker
+Es una Clase heredada de DateTimePicker
 
 ## Radio Button
-todavia no se prepara
+Todavia no se prepara
 
