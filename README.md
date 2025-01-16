@@ -16,6 +16,8 @@ Es una Clase heredada de DateTimePicker
 
 ### Radio Button
 
-<u>Todavia no se prepara</u>
+Es una Clase que hereda de RadioButton
 
+### Combo Box
 
+Es un User Control que tiene un combo box, un label y un boton.

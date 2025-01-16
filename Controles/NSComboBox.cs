@@ -77,35 +77,76 @@ namespace Controles
             AdjustComoBoxDimensions();
 
         }
-
+        #region private Methods
         private void AdjustComoBoxDimensions()
         {
-            throw new NotImplementedException();
+            cmbList.Width = lblText.Width;
+            cmbList.Location = new Point()
+            {
+                X = this.Width - this.Padding.Right - cmbList.Width,
+                Y = lblText.Bottom - cmbList.Height
+            };
         }
+
+        #endregion
+
+        #region Event Methods
 
         private void Surface_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            // Select combo box
+            cmbList.Select();
+            if (cmbList.DropDownStyle == ComboBoxStyle.DropDownList)
+            {
+                cmbList.DroppedDown = true; // Open dropdown list
+            }
         }
 
         private void Icon_Paint(object sender, PaintEventArgs e)
         {
-            throw new NotImplementedException();
+            int iconWidth = 14;
+            int iconHeight = 6;
+            var rectIcon = new Rectangle((btnIcon.Width - iconWidth) / 2, (btnIcon.Height - iconHeight) / 2, iconWidth, iconHeight);
+            Graphics graph = e.Graphics;
+
+            // draw arrow down icon
+            using (GraphicsPath path = new GraphicsPath())
+                using(Pen pen = new Pen(iconColor,2))
+            {
+                graph.SmoothingMode = SmoothingMode.AntiAlias;
+                path.AddLine(rectIcon.X, rectIcon.Y, rectIcon.X + (iconWidth / 2), rectIcon.Bottom);
+                path.AddLine(rectIcon.X + (iconWidth / 2), rectIcon.Bottom, rectIcon.Right, rectIcon.Y);
+                graph.DrawPath(pen, path);
+            }
+
         }
 
         private void Icon_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            // open dropdown list
+            cmbList.Select();
+            cmbList.DroppedDown = true; // Open dropdown list
+
+
         }
 
         private void ComboBox_TextChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            // refresh text
+            lblText.Text = cmbList.Text;
         }
+        #endregion
 
+        #region Default Event
         private void ComboBox_SelectedIndexchanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (OnSelectedIndexChanged != null)
+            {
+                OnSelectedIndexChanged.Invoke(sender, e);
+            }
+            // refresh text
+            lblText.Text = cmbList.Text;
         }
+        #endregion
     }
 }
