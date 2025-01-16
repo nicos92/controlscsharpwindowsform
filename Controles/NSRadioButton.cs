@@ -12,7 +12,7 @@ namespace Controles
     public class NSRadioButton : RadioButton
     {
         // fields
-        private Color checkedColor = Color.MediumSlateBlue;
+        private Color checkedColor = Color.ForestGreen;
         private Color UncheckedColor = Color.DimGray;
 
 
