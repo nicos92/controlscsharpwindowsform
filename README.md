@@ -1,16 +1,21 @@
 # Controles para Windows Form
 
-## supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.2" 
+`supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.2"`
 
 ### Text Box
-esta hecho con un user control. dentro de el hay un text box.
 
-## Circular Picture Box
+Esta hecho con un User Control. Dentro de él hay un TextBox.
+
+### Circular Picture Box
+
 Es una Clase heredada de PictureBox
 
-## Date Picker
+### Date Picker
+
 Es una Clase heredada de DateTimePicker
 
-## Radio Button
-Todavia no se prepara
+### Radio Button
+
+<u>Todavia no se prepara</u>
+
 
