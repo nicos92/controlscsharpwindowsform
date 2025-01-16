@@ -59,6 +59,9 @@
     <Compile Include="NSCircularPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="NSComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="NSDatePicker.cs">
       <SubType>Component</SubType>
     </Compile>
