@@ -7,24 +7,223 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.ComponentModel;
+using System.Drawing.Design;
 
 namespace Controles
 {
     [DefaultEvent("OnSelectedIndexChanged")]
-    public class NSComboBox: UserControl
+    public class NSComboBox : UserControl
     {
         // Fields
         private Color backColor = Color.WhiteSmoke;
         private Color iconColor = Color.ForestGreen;
         private Color listBackColor = Color.FromArgb(230, 228, 245);
         private Color listTextColor = Color.DimGray;
-        private Color borderColor = Color.MediumSlateBlue;
+        private Color borderColor = Color.ForestGreen;
         private int bordersize = 1;
 
         // Items
         private ComboBox cmbList;
         private Label lblText;
         private Button btnIcon;
+
+        #region Properties
+        [Category("NS apariencia")]
+        public new Color BackColor
+        {
+            get
+            {
+                return backColor;
+            }
+
+            set
+            {
+                backColor = value;
+                lblText.BackColor = backColor;
+                btnIcon.BackColor = backColor;
+            }
+        }
+        [Category("NS apariencia")]
+        public Color IconColor
+        {
+            get
+            {
+                return iconColor;
+            }
+
+            set
+            {
+                iconColor = value;
+                btnIcon.Invalidate(); // re draws icon
+            }
+        }
+        [Category("NS apariencia")]
+        public Color ListBackColor
+        {
+            get
+            {
+                return listBackColor;
+            }
+
+            set
+            {
+                listBackColor = value;
+                cmbList.BackColor = listBackColor;
+            }
+        }
+        [Category("NS apariencia")]
+        public Color ListTextColor
+        {
+            get
+            {
+                return listTextColor;
+            }
+
+            set
+            {
+                listTextColor = value;
+                cmbList.ForeColor = listTextColor;
+            }
+        }
+        [Category("NS apariencia")]
+        public Color BorderColor
+        {
+            get
+            {
+                return borderColor;
+            }
+
+            set
+            {
+                borderColor = value;
+                base.BackColor = borderColor;  // border color
+            }
+        }
+        [Category("NS apariencia")]
+        public int Bordersize
+        {
+            get
+            {
+                return bordersize;
+            }
+
+            set
+            {
+                bordersize = value;
+                this.Padding = new Padding(bordersize); // border size
+                AdjustComoBoxDimensions();
+            }
+        }
+        [Category("NS apariencia")]
+        public override Color ForeColor
+        {
+            get
+            {
+                return base.ForeColor;
+            }
+
+            set
+            {
+                base.ForeColor = value;
+                lblText.ForeColor = value;
+            }
+        }
+        [Category("NS apariencia")]
+        public override Font Font
+        {
+            get
+            {
+                return base.Font;
+            }
+
+            set
+            {
+                base.Font = value;
+                lblText.Font = value;
+                cmbList.Font = value; // optional
+            }
+        }
+        [Category("NS apariencia")]
+        public string Texts
+        {
+            get { return lblText.Text; }
+            set { lblText.Text = value; }
+        }
+
+        [Category("NS apariencia")]
+        public ComboBoxStyle DropDownStyle
+        {
+            get { return cmbList.DropDownStyle; }
+            set
+            {
+                //if (cmbList.DropDownStyle != ComboBoxStyle.Simple) // optionals
+                cmbList.DropDownStyle = value;
+            }
+        }
+        #endregion
+
+        // -> DATA
+
+        
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        [Localizable(true)]
+        [Editor("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
+        [MergableProperty(false)]
+        public ComboBox.ObjectCollection Items { get { return cmbList.Items; } }
+
+        [DefaultValue(null)]
+        [RefreshProperties(RefreshProperties.Repaint)]
+        [AttributeProvider(typeof(IListSource))]
+        public new object DataSource
+        {
+            get
+            {
+                return base.DataSource;
+            }
+            set
+            {
+                base.DataSource = value;
+            }
+        }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        [Localizable(true)]
+        [SRDescription("ComboBoxAutoCompleteCustomSourceDescr")]
+        [Editor("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
+        [Browsable(true)]
+        [EditorBrowsable(EditorBrowsableState.Always)]
+        public AutoCompleteStringCollection AutoCompleteCustomSource
+        {
+            get
+            {
+                if (autoCompleteCustomSource == null)
+                {
+                    autoCompleteCustomSource = new AutoCompleteStringCollection();
+                    autoCompleteCustomSource.CollectionChanged += OnAutoCompleteCustomSourceChanged;
+                }
+
+                return autoCompleteCustomSource;
+            }
+            set
+            {
+                if (autoCompleteCustomSource != value)
+                {
+                    if (autoCompleteCustomSource != null)
+                    {
+                        autoCompleteCustomSource.CollectionChanged -= OnAutoCompleteCustomSourceChanged;
+                    }
+
+                    autoCompleteCustomSource = value;
+                    if (autoCompleteCustomSource != null)
+                    {
+                        autoCompleteCustomSource.CollectionChanged += OnAutoCompleteCustomSourceChanged;
+                    }
+
+                    SetAutoComplete(reset: false, recreate: true);
+                }
+            }
+        }
+
 
         // Events
         public event EventHandler OnSelectedIndexChanged; // default event
@@ -38,9 +237,9 @@ namespace Controles
             this.SuspendLayout();
 
             // Combo Box Drop Down List
-            cmbList.BackColor = backColor;
+            cmbList.BackColor = listBackColor;
             cmbList.Font = new Font(this.Font.Name, 10f);
-            cmbList.ForeColor = listBackColor;
+            cmbList.ForeColor = listTextColor;
             cmbList.SelectedIndexChanged += new EventHandler(ComboBox_SelectedIndexchanged);// defalut event
             cmbList.TextChanged += new EventHandler(ComboBox_TextChanged);// refresh text
 
@@ -111,7 +310,7 @@ namespace Controles
 
             // draw arrow down icon
             using (GraphicsPath path = new GraphicsPath())
-                using(Pen pen = new Pen(iconColor,2))
+            using (Pen pen = new Pen(iconColor, 2))
             {
                 graph.SmoothingMode = SmoothingMode.AntiAlias;
                 path.AddLine(rectIcon.X, rectIcon.Y, rectIcon.X + (iconWidth / 2), rectIcon.Bottom);
