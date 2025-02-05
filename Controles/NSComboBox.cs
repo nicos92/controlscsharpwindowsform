@@ -162,67 +162,67 @@ namespace Controles
         }
         #endregion
 
-        // -> DATA
+        //// -> DATA
 
         
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        [Localizable(true)]
-        [Editor("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
-        [MergableProperty(false)]
-        public ComboBox.ObjectCollection Items { get { return cmbList.Items; } }
+        //[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        //[Localizable(true)]
+        //[Editor("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
+        //[MergableProperty(false)]
+        //public ComboBox.ObjectCollection Items { get { return cmbList.Items; } }
 
-        [DefaultValue(null)]
-        [RefreshProperties(RefreshProperties.Repaint)]
-        [AttributeProvider(typeof(IListSource))]
-        public new object DataSource
-        {
-            get
-            {
-                return base.DataSource;
-            }
-            set
-            {
-                base.DataSource = value;
-            }
-        }
+        //[DefaultValue(null)]
+        //[RefreshProperties(RefreshProperties.Repaint)]
+        //[AttributeProvider(typeof(IListSource))]
+        //public new object DataSource
+        //{
+        //    get
+        //    {
+        //        return base.DataSource;
+        //    }
+        //    set
+        //    {
+        //        base.DataSource = value;
+        //    }
+        //}
 
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        [Localizable(true)]
-        [SRDescription("ComboBoxAutoCompleteCustomSourceDescr")]
-        [Editor("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
-        [Browsable(true)]
-        [EditorBrowsable(EditorBrowsableState.Always)]
-        public AutoCompleteStringCollection AutoCompleteCustomSource
-        {
-            get
-            {
-                if (autoCompleteCustomSource == null)
-                {
-                    autoCompleteCustomSource = new AutoCompleteStringCollection();
-                    autoCompleteCustomSource.CollectionChanged += OnAutoCompleteCustomSourceChanged;
-                }
+        //[DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
+        //[Localizable(true)]
+        //[SRDescription("ComboBoxAutoCompleteCustomSourceDescr")]
+        //[Editor("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(UITypeEditor))]
+        //[Browsable(true)]
+        //[EditorBrowsable(EditorBrowsableState.Always)]
+        //public AutoCompleteStringCollection AutoCompleteCustomSource
+        //{
+        //    get
+        //    {
+        //        if (autoCompleteCustomSource == null)
+        //        {
+        //            autoCompleteCustomSource = new AutoCompleteStringCollection();
+        //            autoCompleteCustomSource.CollectionChanged += OnAutoCompleteCustomSourceChanged;
+        //        }
 
-                return autoCompleteCustomSource;
-            }
-            set
-            {
-                if (autoCompleteCustomSource != value)
-                {
-                    if (autoCompleteCustomSource != null)
-                    {
-                        autoCompleteCustomSource.CollectionChanged -= OnAutoCompleteCustomSourceChanged;
-                    }
+        //        return autoCompleteCustomSource;
+        //    }
+        //    set
+        //    {
+        //        if (autoCompleteCustomSource != value)
+        //        {
+        //            if (autoCompleteCustomSource != null)
+        //            {
+        //                autoCompleteCustomSource.CollectionChanged -= OnAutoCompleteCustomSourceChanged;
+        //            }
 
-                    autoCompleteCustomSource = value;
-                    if (autoCompleteCustomSource != null)
-                    {
-                        autoCompleteCustomSource.CollectionChanged += OnAutoCompleteCustomSourceChanged;
-                    }
+        //            autoCompleteCustomSource = value;
+        //            if (autoCompleteCustomSource != null)
+        //            {
+        //                autoCompleteCustomSource.CollectionChanged += OnAutoCompleteCustomSourceChanged;
+        //            }
 
-                    SetAutoComplete(reset: false, recreate: true);
-                }
-            }
-        }
+        //            SetAutoComplete(reset: false, recreate: true);
+        //        }
+        //    }
+        //}
 
 
         // Events

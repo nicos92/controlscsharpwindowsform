@@ -54,6 +54,15 @@ namespace Controles
                 underLinesStyle = value; this.Invalidate();
             }
         }
+        [Category("NS Text Box")]
+        public bool ReadOnly
+        {
+            get { return textBox1.ReadOnly; }
+            set
+            {
+                textBox1.ReadOnly = value; this.Invalidate();
+            }
+        }
 
         // overridden methods
         protected override void OnPaint(PaintEventArgs e)
