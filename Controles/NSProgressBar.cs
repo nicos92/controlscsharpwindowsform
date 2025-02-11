@@ -15,12 +15,12 @@ namespace Controles
     public class NSProgressBar :ProgressBar
     {
         // fields
-        private Color channelColor = Color.Red;
-        private Color sliderColor = Color.PaleGoldenrod;
+        private Color channelColor = Color.FromArgb(255, 108, 117, 125);
+        private Color sliderColor = Color.FromArgb(255, 40, 167, 69);
         private Color foreBackColor = Color.PaleVioletRed;
         private int channelHeight = 6;
         private int sliderheight = 6;
-        private TextPosition showValue = TextPosition.Right;
+        private MiTextPosition showValue = MiTextPosition.Right;
         private string symbolBefore = "";
         private string symbolAfter = "";
         private bool showMaximun = false;
@@ -30,7 +30,6 @@ namespace Controles
         private bool stopPainting = false;
 
         [Category("NSControls")]
-
         public Color ChannelColor
         {
             get
@@ -45,7 +44,6 @@ namespace Controles
             }
         }
         [Category("NSControls")]
-
         public Color SliderColor
         {
             get
@@ -61,7 +59,6 @@ namespace Controles
             }
         }
         [Category("NSControls")]
-
         public Color ForeBackColor
         {
             get
@@ -77,7 +74,6 @@ namespace Controles
             }
         }
         [Category("NSControls")]
-
         public int ChannelHeight
         {
             get
@@ -93,7 +89,6 @@ namespace Controles
             }
         }
         [Category("NSControls")]
-
         public int Sliderheight
         {
             get
@@ -109,8 +104,7 @@ namespace Controles
             }
         }
         [Category("NSControls")]
-        
-        public TextPosition ShowValue
+        public MiTextPosition ShowValue
         {
             get
             {
@@ -281,7 +275,7 @@ namespace Controles
                     {
                         graph.FillRectangle(brushSlider, rectSlider);
                     }
-                    if (ShowValue != TextPosition.None)// text
+                    if (ShowValue != MiTextPosition.None)// text
                     {
                         DrawValueText(graph, sliderWidth, rectSlider);
                     }
@@ -320,25 +314,25 @@ namespace Controles
                 switch (showValue)
                 {
 
-                    case TextPosition.Left:
+                    case MiTextPosition.Left:
 
                         rectText.X = 0;
                         textFormat.Alignment = StringAlignment.Near;
                         break;
 
-                    case TextPosition.Right:
+                    case MiTextPosition.Right:
 
                         rectText.X = this.Width -textSize.Width;
                         textFormat.Alignment = StringAlignment.Far;
                         break;
 
-                    case TextPosition.Center:
+                    case MiTextPosition.Center:
 
                         rectText.X = (this.Width-textSize.Width)/2;
                         textFormat.Alignment = StringAlignment.Center;
                         break;
 
-                    case TextPosition.Sliding:
+                    case MiTextPosition.Sliding:
 
                         rectText.X = sliderWidth-textSize.Width;
                         textFormat.Alignment = StringAlignment.Center;

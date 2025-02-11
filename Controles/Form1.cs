@@ -17,27 +17,21 @@ namespace Controles
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-           
-        }
+        
 
-        private void Timer1_Tick(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            
-            if (nsProgressBar1.Value < nsProgressBar1.Maximum)
+            if (nsProgressBar1.Value < nsProgressBar1.Maximum - 1)
             {
                 nsProgressBar1.Value++;
             }
-            
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void nsButton1_Click_1(object sender, EventArgs e)
         {
-            
-            nsProgressBar1.Value = 0;
+            nsProgressBar1.Visible = true;
             timer1.Start();
-            
+
         }
     }
 }

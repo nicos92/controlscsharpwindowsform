@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Controles
 {
-    public enum TextPosition
+    public enum MiTextPosition
     {
         Left,
         Right,
