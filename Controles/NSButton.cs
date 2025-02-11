@@ -15,7 +15,7 @@ namespace Controles
         //Fields
         private int borderSize = 0;
         private int borderRadius = 40;
-        private Color borderColor = Color.PaleVioletRed;
+        private Color borderColor = Color.FromArgb(255, 248, 249, 250);
 
         [Category("NS Button")]
         public int BorderSize { get {return borderSize;} set { borderSize = value; this.Invalidate();} }
@@ -38,14 +38,14 @@ namespace Controles
             set { this.ForeColor = value;}
         }
 
-        //Constructor
+        //Constructor 
         public NSButton()
         {
             this.FlatStyle = FlatStyle.Flat;
             this.FlatAppearance.BorderSize = 0;
             this.Size = new Size(150, 49);
-            this.BackColor = Color.MediumSlateBlue;
-            this.ForeColor = Color.White;
+            this.BackColor = Color.FromArgb(255, 0, 123, 255);
+            this.ForeColor = Color.FromArgb(255, 248, 249, 250);
             this.Resize += new EventHandler(Button_Resize);
         }
 

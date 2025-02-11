@@ -15,10 +15,10 @@ namespace Controles
     {
 
         //Fields
-        private Color borderColor = Color.MediumSlateBlue;
+        private Color borderColor = Color.FromArgb(255, 108, 117, 125);
         private int borderSize = 2;
         private bool underLinesStyle = false;
-        private Color borderFocusColor = Color.HotPink;
+        private Color borderFocusColor = Color.FromArgb(255, 0, 123, 255);
         private bool isFocused = false;
 
         public NSTextBox()
@@ -77,6 +77,7 @@ namespace Controles
 
                 if (isFocused)
                 {
+                    pen.Color = borderFocusColor;
                     if (underLinesStyle)
                     {
                         g.DrawLine(pen, 0, this.Height - 1, this.Width - 0.5f, this.Height - 1);
@@ -88,7 +89,6 @@ namespace Controles
                 }
                 else
                 {
-                    pen.Color = borderFocusColor;
                     if (underLinesStyle)
                     {
                         g.DrawLine(pen, 0, this.Height - 1, this.Width - 0.5f, this.Height - 1);
