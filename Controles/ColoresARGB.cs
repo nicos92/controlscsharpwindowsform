@@ -5,33 +5,238 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Controles
+namespace Login
 {
-    public static class ColoresARGB
+    public  class ColoresARGB
     {
-        public static readonly Color Primary = Color.FromArgb(255, 0, 123, 255);
-        public static readonly Color Secondary = Color.FromArgb(255, 108, 117, 125);
-        public static readonly Color Success = Color.FromArgb(255, 40, 167, 69);
-        public static readonly Color Info = Color.FromArgb(255, 23, 162, 184);
-        public static readonly Color Warning = Color.FromArgb(255, 255, 193, 7);
-        public static readonly Color Danger = Color.FromArgb(255, 220, 53, 69);
-        public static readonly Color Light = Color.FromArgb(255, 248, 249, 250);
-        public static readonly Color Dark = Color.FromArgb(255, 52, 58, 64);
-        public static readonly Color White = Color.FromArgb(255, 254, 254, 254);
-        public static readonly Color Black = Color.FromArgb(255, 16, 16, 16);
+        private readonly Color primary = Color.FromArgb(255, 0, 123, 255);
+        private readonly Color secondary = Color.FromArgb(255, 108, 117, 125);
+        private readonly Color success = Color.FromArgb(255, 40, 167, 69);
+        private readonly Color info = Color.FromArgb(255, 23, 162, 184);
+        private readonly Color warning = Color.FromArgb(255, 255, 193, 7);
+        private readonly Color danger = Color.FromArgb(255, 220, 53, 69);
+        private readonly Color light = Color.FromArgb(255, 248, 249, 250);
+        private readonly Color dark = Color.FromArgb(255, 32, 37, 42);
+        private readonly Color darkBackText = Color.FromArgb(255, 26, 31, 34);
 
+        private readonly Color white = Color.FromArgb(255, 254, 254, 254);
+        private readonly Color black = Color.FromArgb(255, 16, 16, 16);
 
-        public static readonly Color Blue = Color.FromArgb(255, 0, 123, 255);
-        public static readonly Color Indigo = Color.FromArgb(255, 102, 16, 242);
-        public static readonly Color Purple = Color.FromArgb(255, 111, 66, 193);
-        public static readonly Color Pink = Color.FromArgb(255, 232, 62, 140);
-        public static readonly Color Red = Color.FromArgb(255, 220, 53, 69);
-        public static readonly Color Orange = Color.FromArgb(255, 253, 126, 20);
-        public static readonly Color Yellow = Color.FromArgb(255, 255, 193, 7);
-        public static readonly Color Green = Color.FromArgb(255, 40, 167, 69);
-        public static readonly Color Teal = Color.FromArgb(255, 32, 201, 151);
-        public static readonly Color Cyan = Color.FromArgb(255, 23, 162, 184);
-        public static readonly Color verdeConsola = Color.FromArgb(255, 0, 204, 0);
+        private readonly Color blue = Color.FromArgb(255, 0, 123, 255);
+        private readonly Color indigo = Color.FromArgb(255, 102, 16, 242);
+        private readonly Color purple = Color.FromArgb(255, 111, 66, 193);
+        private readonly Color pink = Color.FromArgb(255, 232, 62, 140);
+        private readonly Color red = Color.FromArgb(255, 220, 53, 69);
+        private readonly Color orange = Color.FromArgb(255, 253, 126, 20);
+        private readonly Color yellow = Color.FromArgb(255, 255, 193, 7);
+        private readonly Color green = Color.FromArgb(255, 40, 167, 69);
+        private readonly Color teal = Color.FromArgb(255, 32, 201, 151);
+        private readonly Color cyan = Color.FromArgb(255, 23, 162, 184);
+        private readonly Color verdeConsola = Color.FromArgb(255, 0, 204, 0);
+
+        private Color[] coloresRand;
+        public ColoresARGB()
+        {
+            this.coloresRand = new Color[10]{ Blue, Indigo, Purple, Pink, Red, Orange, Yellow, Green, Teal, Cyan };
+        }
+
+        public Color Primary
+        {
+            get
+            {
+                return primary;
+            }
+        }
+
+        public Color Secondary
+        {
+            get
+            {
+                return secondary;
+            }
+        }
+
+        public Color Success
+        {
+            get
+            {
+                return success;
+            }
+        }
+
+        public Color Info
+        {
+            get
+            {
+                return info;
+            }
+        }
+
+        public Color Warning
+        {
+            get
+            {
+                return warning;
+            }
+        }
+
+        public Color Danger
+        {
+            get
+            {
+                return danger;
+            }
+        }
+
+        public Color Light
+        {
+            get
+            {
+                return light;
+            }
+        }
+
+        public Color Dark
+        {
+            get
+            {
+                return dark;
+            }
+        }
+
+        public Color DarkBackText
+        {
+            get
+            {
+                return darkBackText;
+            }
+        }
+
+        public Color White
+        {
+            get
+            {
+                return white;
+            }
+        }
+
+        public Color Black
+        {
+            get
+            {
+                return black;
+            }
+        }
+
+        public Color Blue
+        {
+            get
+            {
+                return blue;
+            }
+        }
+
+        public Color Indigo
+        {
+            get
+            {
+                return indigo;
+            }
+        }
+
+        public Color Purple
+        {
+            get
+            {
+                return purple;
+            }
+        }
+
+        public Color Pink
+        {
+            get
+            {
+                return pink;
+            }
+        }
+
+        public Color Red
+        {
+            get
+            {
+                return red;
+            }
+        }
+
+        public Color Orange
+        {
+            get
+            {
+                return orange;
+            }
+        }
+
+        public Color Yellow
+        {
+            get
+            {
+                return yellow;
+            }
+        }
+
+        public Color Green
+        {
+            get
+            {
+                return green;
+            }
+        }
+
+        public Color Teal
+        {
+            get
+            {
+                return teal;
+            }
+        }
+
+        public Color Cyan
+        {
+            get
+            {
+                return cyan;
+            }
+        }
+
+        public Color VerdeConsola
+        {
+            get
+            {
+                return verdeConsola;
+            }
+        }
+
+        public Color[] ColoresRand
+        {
+            get
+            {
+                return coloresRand;
+            }
+
+            set
+            {
+                coloresRand = value;
+            }
+        }
+
+        public  Color RandomColor()
+        {
+            Random Number = new Random();
+
+            int numberRandom = Number.Next(0, 10);
+            return ColoresRand[numberRandom];
+        }
     }
+
 
 }
